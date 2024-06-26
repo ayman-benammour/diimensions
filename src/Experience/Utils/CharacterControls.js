@@ -10,7 +10,7 @@ export default class CharacterControls
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
-        this.model = this.experience.world.fox
+        this.model = this.experience.world.spiderman
         this.camera = this.experience.camera
 
         // Debug
