@@ -1,6 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
+import { Portal } from './Portal.js'
 import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
 
@@ -16,6 +17,7 @@ export default class World
         this.resources.on('ready', () =>
         {
             // Setup
+            this.portal = new Portal()
             this.spiderman = new SpiderMan()
             this.floor = new Floor()
             this.environment = new Environment()
@@ -27,6 +29,8 @@ export default class World
     {
         if(this.characterControls)
             this.characterControls.update()
+        if(this.portal)
+            this.portal.trackPlayer(this.spiderman.model)
         if(this.spiderman)
             this.spiderman.update()
     }
