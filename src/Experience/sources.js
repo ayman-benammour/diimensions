@@ -26,5 +26,10 @@ export default [
         name: 'spidermanModel',
         type: 'gltfModel',
         path: 'models/SpiderMen/spiderman.glb'
+    },
+    {
+        name: 'city',
+        type: 'gltfModel',
+        path: 'models/Maps/city.glb'
     }
 ]
