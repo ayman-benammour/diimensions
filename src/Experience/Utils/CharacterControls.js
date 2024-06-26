@@ -73,9 +73,6 @@ export default class CharacterControls
                 this.newAction = 'twerk'
                 this.model.animation.play(this.newAction)
             }
-        
-
-            console.log(event)
 
             if (event.key.toLowerCase() === this.spaceKey) {
                 this.newAction = 'jump'
