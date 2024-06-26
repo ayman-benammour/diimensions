@@ -33,3 +33,12 @@ body
 {
     bottom: 5vh;
 }
+
+.healthBar
+{
+    position: absolute;
+    z-index: 5;
+    width: 400px;
+    top: 32px;
+    left: 32px;
+}
