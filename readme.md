@@ -1,7 +1,7 @@
 # Diimensions
-Diimensions est une expérience web 3D réalisée en trois jours par des étudiants de l'[IIM](https://www.iim.fr/). Inspirée de l'univers du Spider-Verse, cette expérience permet à l'utilisateur de suivre un Spider-Man à travers différentes dimensions. À chaque transition, les cartes et textures changent, imitant ainsi l'esthétique unique du film.
+Diimensions is a 3D web experience created in three days by students at [IIM](https://www.iim.fr/). Inspired by the Spider-Verse universe, this experience allows users to follow a Spider-Man through different dimensions. With each transition, the maps and textures change, mimicking the film's unique aesthetic.
 
-Ce site web est le travail des étudiants de l'école [IIM](https://www.iim.fr/). Il n'existe qu'à des fins éducatives et son contenu reste la propriété de ses auteurs respectifs.
+This website is the work of students at [IIM](https://www.iim.fr/). It exists for educational purposes only and its content remains the property of its respective authors.
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
