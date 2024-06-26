@@ -10,8 +10,8 @@ export class Portal {
         this.time = this.experience.time
         this.debug = this.experience.debug
 
-        const radiusX = 1;
-        const radiusY = 2;
+        const radiusX = 1.5;
+        const radiusY = 1.5;
 
         const ovalShape = new THREE.Shape();
         ovalShape.moveTo(0, -radiusY);
@@ -154,30 +154,29 @@ export class Portal {
         })
         this._targetMaterial = material
         const mesh = new THREE.Mesh(geometry, material)
-        mesh.position.setY(2)
+        mesh.position.setY(1)
         this._target = mesh
         this.scene.add(mesh)
     }
 
-    calculateDistance() {
-        if (this.experience.world) {
-            this.fox = this.experience.world.fox
+    calculateDistance(model) {
+        if (model) {
             
             const portalPotition = this._target.position
-            const foxPotition = this.fox.model.position
+            const playerPotition = model.position
 
-            return portalPotition.distanceTo(foxPotition)
+            return portalPotition.distanceTo(playerPotition)
         }
     }
 
-    update() {
+    trackPlayer(model) {
         this._targetMaterial.uniforms.uTime.value = this.time.elapsed / 1000
         
-        const distance = this.calculateDistance()
-        if(this.fox){
-            const foxPosition = this.fox.model.position.clone()
-            foxPosition.y = this._target.position.y
-            this._target.lookAt(foxPosition)
+        const distance = this.calculateDistance(model)
+        if(model){
+            const playerPosition = model.position.clone()
+            playerPosition.y = this._target.position.y
+            this._target.lookAt(playerPosition)
         }
         if(distance <= 3){
             /**
