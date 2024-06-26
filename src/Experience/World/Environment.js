@@ -35,9 +35,6 @@ export default class Environment
         this.sunLight.position.set(3.5, 2, - 1.25)
         this.scene.add(this.sunLight)
 
-        const directionalLightCameraHelper = new THREE.CameraHelper(this.sunLight.shadow.camera)
-        this.scene.add(directionalLightCameraHelper)
-
         // Debug
         if(this.debug.active)
         {
