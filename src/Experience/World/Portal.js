@@ -7,7 +7,6 @@ export class Portal {
     constructor() {
         this.experience = new Experience()
         this.scene = this.experience.scene
-        this.fox = this.experience.world.fox
         this.time = this.experience.time
         this.debug = this.experience.debug
 
@@ -21,6 +20,7 @@ export class Portal {
         const geometry = new THREE.ShapeGeometry(ovalShape);
         this._uTime = 0
         const material = new THREE.RawShaderMaterial({
+            side: THREE.DoubleSide,
             uniforms: {
                 uTime: { value: this._uTime },
                 uColorStart: { value: new THREE.Color(0xEC6E78) },
@@ -160,10 +160,30 @@ export class Portal {
     }
 
     calculateDistance() {
-        const portalPotition = this._target.position
+        if (this.experience.world) {
+            this.fox = this.experience.world.fox
+            
+            const portalPotition = this._target.position
+            const foxPotition = this.fox.model.position
+
+            return portalPotition.distanceTo(foxPotition)
+        }
     }
 
     update() {
         this._targetMaterial.uniforms.uTime.value = this.time.elapsed / 1000
+        
+        const distance = this.calculateDistance()
+        if(this.fox){
+            const foxPosition = this.fox.model.position.clone()
+            foxPosition.y = this._target.position.y
+            this._target.lookAt(foxPosition)
+        }
+        if(distance <= 3){
+            /**
+             * @todo: Téléportation
+             */
+            console.info('tp')
+        }
     }
 }
