@@ -45,6 +45,9 @@ export default class SpiderMan {
         this.animation.actions.idle = this.animation.mixer.clipAction(this.resource.animations[1])
         this.animation.actions.walking = this.animation.mixer.clipAction(this.resource.animations[6])
         this.animation.actions.running = this.animation.mixer.clipAction(this.resource.animations[3])
+        this.animation.actions.breakdance = this.animation.mixer.clipAction(this.resource.animations[0])
+        this.animation.actions.twerk = this.animation.mixer.clipAction(this.resource.animations[5])
+        this.animation.actions.jump = this.animation.mixer.clipAction(this.resource.animations[2])
 
         this.animation.actions.current = this.animation.actions.idle
         this.animation.actions.current.play()
