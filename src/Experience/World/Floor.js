@@ -9,15 +9,28 @@ export default class Floor
         this.scene = this.experience.scene
         this.resources = this.experience.resources
 
-        this.setGeometry()
-        this.setTextures()
-        this.setMaterial()
-        this.setMesh()
+        // Resource
+        this.resource = this.resources.items.city
+
+        this.setMap()
+        // this.setTextures()
+        // this.setMaterial()
+        // this.setMesh()
+        console.log(this.resources.items.city.scene)
     }
 
-    setGeometry()
-    {
-        this.geometry = new THREE.CircleGeometry(64, 64)
+    setMap() {
+        this.map = this.resource.scene
+        this.map.scale.set(1, 1, 1)
+        this.scene.add(this.map)
+        this.map.castShadow = true
+
+        this.map.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                child.castShadow = true
+                child.receiveShadow = true
+            }
+        })
     }
 
     setTextures()
