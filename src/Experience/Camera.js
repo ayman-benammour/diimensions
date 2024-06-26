@@ -30,14 +30,6 @@ export default class Camera {
     }
 
     update() {
-        // Mise à jour de la position de la caméra pour suivre le modèle
-        // if (this.model) {
-        //     const offset = new THREE.Vector3(0, 2, 5) // Ajustez cet offset selon vos besoins
-        //     const targetPosition = new THREE.Vector3().copy(this.model.position).add(offset)
-        //     this.instance.position.lerp(targetPosition, 0.1)
-        //     this.instance.lookAt(this.model.position)
-        // }
-
         this.controls.update()
     }
 }

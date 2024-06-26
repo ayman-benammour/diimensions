@@ -10,7 +10,7 @@ export default class CharacterControls
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
-        this.model = this.experience.world.fox
+        this.model = this.experience.world.spiderman
         this.camera = this.experience.camera
 
         // Debug
@@ -34,6 +34,9 @@ export default class CharacterControls
         this.qKey = 'q'
         this.sKey = 's'
         this.dKey = 'd'
+        this.vKey = 'v'
+        this.bKey = 'b'
+        this.spaceKey = ' '
         this.shiftKey = 'shift'
         this.directions = [this.zKey, this.qKey, this.sKey, this.dKey]
 
@@ -60,6 +63,25 @@ export default class CharacterControls
             } else {
                 this.keysPressed[event.key.toLowerCase()] = true
             }
+
+            if (event.key.toLowerCase() === this.vKey) {
+                this.newAction = 'breakdance'
+                this.model.animation.play(this.newAction)
+            }
+
+            if (event.key.toLowerCase() === this.bKey) {
+                this.newAction = 'twerk'
+                this.model.animation.play(this.newAction)
+            }
+        
+
+            console.log(event)
+
+            if (event.key.toLowerCase() === this.spaceKey) {
+                this.newAction = 'jump'
+                this.model.animation.play(this.newAction)
+            }
+
         },false)
 
         document.addEventListener('keyup', (event) => {
