@@ -36,11 +36,6 @@ export default class Experience {
         this.renderer = new Renderer()
         this.world = new World()
         this.renderedWorld = 1
-        
-        this.characterControls = new CharacterControls()
-
-        // Variable for switching scenes
-        this.sceneDisplay = 1
 
         // Resize event
         this.sizes.on('resize', () => {
