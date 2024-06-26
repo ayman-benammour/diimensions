@@ -1,10 +1,10 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
-import Floor from './Floor.js'
+import Map from './Map.js'
 import { Portal } from './Portal.js'
 import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
-import * as THREE from 'three'  
+import * as THREE from 'three'
 
 export default class World {
     constructor() {
@@ -20,7 +20,7 @@ export default class World {
                 this.portal = new Portal(2)
                 this.portal.model.position.set(0, 1, 5)
                 this.spiderman = new SpiderMan()
-                this.floor = new Floor()
+                this.map = new Map()
                 this.environment = new Environment()
                 this.characterControls = new CharacterControls()
             }

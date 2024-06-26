@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
 
-export default class Floor
+export default class Map
 {
     constructor()
     {
@@ -13,10 +13,6 @@ export default class Floor
         this.resource = this.resources.items.city
 
         this.setMap()
-        // this.setTextures()
-        // this.setMaterial()
-        // this.setMesh()
-        console.log(this.resources.items.city.scene)
     }
 
     setMap() {
