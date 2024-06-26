@@ -4,11 +4,12 @@ import * as THREE from 'three'
 import Experience from '../Experience'
 
 export class Portal {
-    constructor() {
+    constructor(world) {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.time = this.experience.time
         this.debug = this.experience.debug
+        this.worldToRender = world
 
         const radiusX = 1.5;
         const radiusY = 1.5;
@@ -152,17 +153,17 @@ export class Portal {
             
             `
         })
-        this._targetMaterial = material
+        this.modelMaterial = material
         const mesh = new THREE.Mesh(geometry, material)
         mesh.position.setY(1)
-        this._target = mesh
-        this.scene.add(mesh)
+        this.model = mesh
+        this.scene.add(this.model)
     }
 
     calculateDistance(model) {
         if (model) {
             
-            const portalPotition = this._target.position
+            const portalPotition = this.model.position
             const playerPotition = model.position
 
             return portalPotition.distanceTo(playerPotition)
@@ -170,18 +171,19 @@ export class Portal {
     }
 
     trackPlayer(model) {
-        this._targetMaterial.uniforms.uTime.value = this.time.elapsed / 1000
+        this.modelMaterial.uniforms.uTime.value = this.time.elapsed / 1000
         
         const distance = this.calculateDistance(model)
         if(model){
             const playerPosition = model.position.clone()
-            playerPosition.y = this._target.position.y
-            this._target.lookAt(playerPosition)
+            playerPosition.y = this.model.position.y
+            this.model.lookAt(playerPosition)
         }
         if(distance <= 3){
             /**
              * @todo: Téléportation
              */
+            this.tp = true
             console.info('tp')
         }
     }
