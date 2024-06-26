@@ -2,6 +2,7 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
 import Fox from './Fox.js'
+import { Portal } from './Portal.js'
 
 export default class World
 {
@@ -17,6 +18,7 @@ export default class World
             // Setup
             this.floor = new Floor()
             this.fox = new Fox()
+            this.portal = new Portal()
             this.environment = new Environment()
         })
     }
@@ -25,5 +27,7 @@ export default class World
     {
         if(this.fox)
             this.fox.update()
+        if(this.portal)
+            this.portal.update()
     }
 }
