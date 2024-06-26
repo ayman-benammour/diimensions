@@ -1,7 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Floor from './Floor.js'
-import Fox from './Fox.js'
+import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
 
 export default class World
@@ -16,7 +16,7 @@ export default class World
         this.resources.on('ready', () =>
         {
             // Setup
-            this.fox = new Fox()
+            this.spiderman = new SpiderMan()
             this.floor = new Floor()
             this.environment = new Environment()
             this.characterControls = new CharacterControls()
@@ -27,8 +27,7 @@ export default class World
     {
         if(this.characterControls)
             this.characterControls.update()
-        if(this.fox)
-            this.fox.update()
-            
+        if(this.spiderman)
+            this.spiderman.update()
     }
 }
