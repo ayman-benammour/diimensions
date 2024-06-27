@@ -2,11 +2,11 @@ import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Map from './Map.js'
 import MapLego from './MapLego.js'
+import MapMinecraft from './MapMinecraft.js'
 import { Portal } from './Portal.js'
 import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
 import * as THREE from 'three'
-import MapMinecraft from './MapMinecraft.js'
 
 export default class World {
     constructor() {
@@ -49,10 +49,21 @@ export default class World {
                     case 2:
                         // Monde 2
                         this.experience.scene.clear()
-                        this.portal = new Portal(1)
+                        this.portal = new Portal(3)
                         this.portal.model.position.set(-20, 1.5, 32)
                         this.spiderman = new SpiderMan()
                         this.map = new MapLego()
+                        // this.floor = new Floor()
+                        this.environment = new Environment()
+                        this.characterControls = new CharacterControls()
+                        break;
+                    case 3:
+                        // Monde 2
+                        this.experience.scene.clear()
+                        this.portal = new Portal(1)
+                        this.portal.model.position.set(-40, 1.5, 31.8)
+                        this.spiderman = new SpiderMan()
+                        this.map = new MapMinecraft()
                         // this.floor = new Floor()
                         this.environment = new Environment()
                         this.characterControls = new CharacterControls()

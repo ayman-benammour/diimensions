@@ -8,7 +8,7 @@ export default class MapMinecraft {
         this.resources = this.experience.resources
 
         // Resource
-        this.resource = this.resources.items.Minecraft
+        this.resource = this.resources.items.minecraft
 
 
         this.setMap()
@@ -16,8 +16,8 @@ export default class MapMinecraft {
 
     setMap() {
         this.map = this.resource.scene
-        this.map.scale.set(5, 5, 5)
-        this.map.position.set(-20, 1.25, 32)
+        this.map.scale.set(2, 2, 2)
+        this.map.position.set(-15, -4, 9)
         this.scene.add(this.map)
         this.map.castShadow = true
 
