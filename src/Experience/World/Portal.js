@@ -5,6 +5,8 @@ import Experience from '../Experience'
 
 export class Portal {
     constructor(world) {
+        this.DISTANCE2TRIGGER = 2
+
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.time = this.experience.time
@@ -179,7 +181,7 @@ export class Portal {
             playerPosition.y = this.model.position.y
             this.model.lookAt(playerPosition)
         }
-        if(distance <= 3){
+        if(distance <= this.DISTANCE2TRIGGER){
             /**
              * @todo: Téléportation
              */
