@@ -20,10 +20,40 @@ export default class Resources extends EventEmitter
 
     setLoaders()
     {
+        const loadingScreenElement = document.querySelector('.loadingScreen')
+        const loadingButtonElement = document.querySelector('.loadingButton')
+        const loadingBarElement = document.querySelector('.loadingBar')
+
+        console.log(loadingButtonElement)
+
+        this.loadingManagement = new THREE.LoadingManager(
+            // Loaded
+            () =>
+            {
+                window.setTimeout(() =>
+                    {
+                        loadingButtonElement.classList.add('ended')
+                        window.setTimeout(() =>
+                            {
+                                loadingScreenElement.classList.add('ended')
+                            }, 1000)
+                        loadingBarElement.classList.add('ended')
+                        loadingBarElement.style.transform = ''
+                    }, 1000)
+            },
+
+            // Progress
+            (itemUrl, itemsLoaded, itemsTotal) =>
+            {
+                const progressRatio = itemsLoaded / itemsTotal
+                loadingBarElement.style.transform = `scaleX(${progressRatio})`
+            }
+        )
+
         this.loaders = {}
-        this.loaders.gltfLoader = new GLTFLoader()
-        this.loaders.textureLoader = new THREE.TextureLoader()
-        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader()
+        this.loaders.gltfLoader = new GLTFLoader(this.loadingManagement)
+        this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManagement)
+        this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(this.loadingManagement)
     }
 
     startLoading()

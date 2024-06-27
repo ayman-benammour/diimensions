@@ -18,6 +18,59 @@ body
     outline: none;
 }
 
+.loadingScreen
+{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    object-position: bottom;
+    object-fit: cover;
+}
+
+.loadingScreen.ended
+{
+    transform-origin: top left;
+    transition: transform 1.5s;
+    transform: translateY(1000px);
+}
+
+.loadingButton
+{
+    position: absolute;
+    z-index: 10;
+    left: calc(50% - 100px);
+    bottom: 80px;
+    width: 200px;
+}
+
+.loadingButton.ended
+{
+    transform-origin: top left;
+    transition: transform 0.5s;
+    transform: translateY(200px);
+}
+
+.loadingBar
+{
+    position: absolute;
+    bottom: 104px;
+    width: 100%;
+    height: 10px;
+    background: #e60509;
+    z-index: 10;
+    transform-origin: top left;
+    transition: transform 0.5s;
+    transform: scaleX(0);
+}
+
+.loadingBar.ended
+{
+    transform: scaleX(0);
+    transform-origin: 100% 0;
+    transition: transform 1.5s ease-in-out;
+}
+
 .uiPhone
 {
     position: absolute;
