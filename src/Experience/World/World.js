@@ -18,7 +18,7 @@ export default class World {
             if (this.renderedWorld == 1) {
                 // Setup
                 this.portal = new Portal(2)
-                this.portal.model.position.set(0, 1, 5)
+                this.portal.model.position.set(-3, 1, 33)
                 this.spiderman = new SpiderMan()
                 this.map = new Map()
                 this.environment = new Environment()
