@@ -1,7 +1,7 @@
 import Experience from '../Experience.js'
 import Environment from './Environment.js'
 import Map from './Map.js'
-import { Portal } from './Portal.js'
+import Portal from './Portal.js'
 import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
 import * as THREE from 'three'
@@ -11,11 +11,9 @@ export default class World {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-        this.renderedWorld = 1
 
         // Wait for resources
         this.resources.on('ready', () => {
-            if (this.renderedWorld == 1) {
                 // Setup
                 this.portal = new Portal(2)
                 this.portal.model.position.set(-3, 1, 33)
@@ -23,7 +21,6 @@ export default class World {
                 this.map = new Map()
                 this.environment = new Environment()
                 this.characterControls = new CharacterControls()
-            }
         })
     }
 

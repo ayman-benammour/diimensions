@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import EventEmitter from './EventEmitter.js'
-import { GroundedSkybox } from 'three/examples/jsm/Addons.js'
 import Experience from '../Experience.js'
 import { RGBELoader } from 'three/examples/jsm/Addons.js'
 
@@ -103,9 +102,6 @@ export default class Resources extends EventEmitter
                         (file) =>
                         {
                             this.sourceLoaded(source, file)
-                            this.skyBox = new GroundedSkybox(file, 15, 75)
-                            this.skyBox.position.y = 15
-                            this.scene.add(this.skyBox)
                         }
                     )
                 }
