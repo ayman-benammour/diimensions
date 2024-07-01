@@ -79,6 +79,9 @@ export default class CharacterControls
                 this.model.animation.play(this.newAction)
             }
 
+            this.camera.instance.zoom = 1
+            this.camera.instance.updateProjectionMatrix()
+
         },false)
 
         document.addEventListener('keyup', (event) => {

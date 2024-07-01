@@ -13,11 +13,9 @@ export default class World {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-        this.renderedWorld = 1
 
         // Wait for resources
         this.resources.on('ready', () => {
-            if (this.renderedWorld == 1) {
                 // Setup
                 this.portal = new Portal(2)
                 this.portal.model.position.set(-3, 1, 33)
@@ -25,7 +23,6 @@ export default class World {
                 this.map = new Map()
                 this.environment = new Environment()
                 this.characterControls = new CharacterControls()
-            }
         })
     }
 

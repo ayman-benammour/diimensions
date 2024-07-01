@@ -3,7 +3,7 @@ import * as THREE from 'three'
 // import portalFragmentShader from '../shaders/portal/fragment.glsl'
 import Experience from '../Experience'
 
-export class Portal {
+export default class Portal {
     constructor(world) {
         this.DISTANCE2TRIGGER = 2
 

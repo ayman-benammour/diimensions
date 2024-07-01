@@ -1,10 +1,15 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import EventEmitter from './EventEmitter.js'
+import Experience from '../Experience.js'
+import { RGBELoader } from 'three/examples/jsm/Addons.js'
 
 export default class Resources extends EventEmitter {
     constructor(sources) {
         super()
+
+        this.experience = new Experience()
+        this.scene = this.experience.scene
 
         this.sources = sources
 
@@ -21,8 +26,6 @@ export default class Resources extends EventEmitter {
         const loadingScreenElement = document.querySelector('.loadingScreen')
         const loadingButtonElement = document.querySelector('.loadingButton')
         const loadingBarElement = document.querySelector('.loadingBar')
-
-        console.log(loadingButtonElement)
 
         this.loadingManagement = new THREE.LoadingManager(
             // Loaded
@@ -52,6 +55,7 @@ export default class Resources extends EventEmitter {
         this.loaders.gltfLoader = new GLTFLoader(this.loadingManagement)
         this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManagement)
         this.loaders.cubeTextureLoader = new THREE.CubeTextureLoader(this.loadingManagement)
+        this.loaders.rgbeLoader = new RGBELoader(this.loadingManagement)
     }
 
     startLoading() {
@@ -81,6 +85,16 @@ export default class Resources extends EventEmitter {
                     }
                 )
             }
+            else if(source.type === 'rgbe')
+                {
+                    this.loaders.rgbeLoader.load(
+                        source.path,
+                        (file) =>
+                        {
+                            this.sourceLoaded(source, file)
+                        }
+                    )
+                }
         }
     }
 

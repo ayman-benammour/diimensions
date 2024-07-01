@@ -14,14 +14,6 @@ export default class SpiderMan {
             this.debugFolder = this.debug.ui.addFolder('model')
         }
 
-        document.addEventListener('click', () =>
-        {
-            console.log('position')
-            console.log(this.model.position)
-            console.log('rotation')
-            console.log(this.model.rotation)
-        })
-
         // Resource
         this.resource = this.resources.items.spidermanModel
 
@@ -32,11 +24,8 @@ export default class SpiderMan {
     setModel() {
         this.model = this.resource.scene
         this.model.scale.set(1, 1, 1)
-
-        // this.model.position.x = -5.589
-        // this.model.position.z = 0.627
-
-        // this.model.rotation.set(3.141, 0.828, -3.141)
+        this.model.position.set(-3.946427373830228, 0, 16.828284135159702)
+        this.model.rotation.set(0, -0.6529530259104375, 0)
 
         this.scene.add(this.model)
 

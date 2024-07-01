@@ -8,6 +8,8 @@ html,
 body
 {
     overflow: hidden;
+    height: 100vh;
+    background: linear-gradient(180deg, #EE8F61 0%, #FCC28C 29.4%, #EFDDCF 100%);
 }
 
 .webgl
