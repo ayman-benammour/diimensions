@@ -4,10 +4,8 @@ import EventEmitter from './EventEmitter.js'
 import Experience from '../Experience.js'
 import { RGBELoader } from 'three/examples/jsm/Addons.js'
 
-export default class Resources extends EventEmitter
-{
-    constructor(sources)
-    {
+export default class Resources extends EventEmitter {
+    constructor(sources) {
         super()
 
         this.experience = new Experience()
@@ -60,37 +58,29 @@ export default class Resources extends EventEmitter
         this.loaders.rgbeLoader = new RGBELoader(this.loadingManagement)
     }
 
-    startLoading()
-    {
+    startLoading() {
         // Load each source
-        for(const source of this.sources)
-        {
-            if(source.type === 'gltfModel')
-            {
+        for (const source of this.sources) {
+            if (source.type === 'gltfModel') {
                 this.loaders.gltfLoader.load(
                     source.path,
-                    (file) =>
-                    {
+                    (file) => {
                         this.sourceLoaded(source, file)
                     }
                 )
             }
-            else if(source.type === 'texture')
-            {
+            else if (source.type === 'texture') {
                 this.loaders.textureLoader.load(
                     source.path,
-                    (file) =>
-                    {
+                    (file) => {
                         this.sourceLoaded(source, file)
                     }
                 )
             }
-            else if(source.type === 'cubeTexture')
-            {
+            else if (source.type === 'cubeTexture') {
                 this.loaders.cubeTextureLoader.load(
                     source.path,
-                    (file) =>
-                    {
+                    (file) => {
                         this.sourceLoaded(source, file)
                     }
                 )
@@ -108,14 +98,12 @@ export default class Resources extends EventEmitter
         }
     }
 
-    sourceLoaded(source, file)
-    {
+    sourceLoaded(source, file) {
         this.items[source.name] = file
 
         this.loaded++
 
-        if(this.loaded === this.toLoad)
-        {
+        if (this.loaded === this.toLoad) {
             this.trigger('ready')
         }
     }

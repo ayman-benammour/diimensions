@@ -164,7 +164,7 @@ export default class Portal {
 
     calculateDistance(model) {
         if (model) {
-            
+
             const portalPotition = this.model.position
             const playerPotition = model.position
 
@@ -174,14 +174,14 @@ export default class Portal {
 
     trackPlayer(model) {
         this.modelMaterial.uniforms.uTime.value = this.time.elapsed / 1000
-        
+
         const distance = this.calculateDistance(model)
-        if(model){
+        if (model) {
             const playerPosition = model.position.clone()
             playerPosition.y = this.model.position.y
             this.model.lookAt(playerPosition)
         }
-        if(distance <= this.DISTANCE2TRIGGER){
+        if (distance <= this.DISTANCE2TRIGGER) {
             /**
              * @todo: Téléportation
              */

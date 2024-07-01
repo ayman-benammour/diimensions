@@ -26,5 +26,15 @@ export default [
         name: 'city',
         type: 'gltfModel',
         path: 'models/Maps/city.glb'
-    }
+    },
+    {
+        name: 'lego',
+        type: 'gltfModel',
+        path: 'models/Maps/lego.glb'
+    },
+    {
+        name: 'minecraft',
+        type: 'gltfModel',
+        path: 'models/Maps/minecraft.glb'
+    },
 ]
