@@ -1,3 +1,8 @@
+:root
+{
+    --red: #E60509;
+
+}
 *
 {
     margin: 0;
@@ -97,3 +102,128 @@ body
     top: 32px;
     left: 32px;
 }
+
+/* Menu */
+.menu
+{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0 0, 100% 0%, 74% 100%, 0% 100%);
+    width: 37%;
+    height: 100vh;
+    background-color: blue;
+    z-index: 1000;
+    padding: 44px;
+    gap: 30px;
+}
+
+.title
+{
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 75;
+    color: white;
+    font-size: 12vh;
+    margin-top: -30px;
+}
+
+h3
+{
+    position: relative;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 75;
+    color: white;
+    font-size: 36px;
+}
+
+h4
+{
+    position: relative;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 75;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+p
+{
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: white;
+}
+
+.desc
+{
+    position: relative;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 75;
+    color: white;
+    margin-top: -25px;
+    font-size: 14px;
+}
+
+.selection
+{
+    position: relative;
+    width: 33vw;
+    height: 29vh;
+    margin-top: -40px;
+    display: flex;
+    gap: 40px;
+    background: red;
+}
+
+.selection .miles
+{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.selection .gwen
+{
+    position: absolute;
+    top: -25px;
+    left: 215px;
+}
+
+.selection .mc
+{
+    position: absolute;
+    bottom: -20px;
+    left: 0px;
+}
+
+.selection .lego
+{
+    position: absolute;
+    bottom: -27px;
+    left: 192px;
+    z-index: 1;
+}
+
+.selection .miguel
+{
+    position: absolute;
+    top: 14px;
+    right: 0px;
+}
+
+.disclaimer
