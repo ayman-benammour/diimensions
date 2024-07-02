@@ -112,7 +112,7 @@ body
     clip-path: polygon(0 0, 100% 0%, 74% 100%, 0% 100%);
     width: 37%;
     height: 100vh;
-    background-color: blue;
+    background-color: var(--red);
     z-index: 1000;
     padding: 44px;
     gap: 30px;
@@ -187,7 +187,6 @@ p
     margin-top: -40px;
     display: flex;
     gap: 40px;
-    background: red;
 }
 
 .selection .miles
@@ -226,4 +225,15 @@ p
     right: 0px;
 }
 
-.disclaimer
+.disclaimer p
+{
+    padding-right: 128px;
+}
+
+.echap
+{
+    position: absolute;
+    z-index: 10000;
+    left: 39.5%;
+    top: 44px;
+}
