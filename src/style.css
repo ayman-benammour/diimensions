@@ -23,6 +23,13 @@ body
     top: 0;
     left: 0;
     outline: none;
+    transition: transform 0.5s;
+    transform: translateX(15vw);
+}
+
+.webgl.menuClose
+{
+    transform: translateX(0);
 }
 
 .loadingScreen
@@ -94,28 +101,50 @@ body
     bottom: 5vh;
 }
 
-.healthBar
+.profile
 {
     position: absolute;
     z-index: 5;
-    width: 400px;
     top: 32px;
     left: 32px;
 }
 
 /* Menu */
+.echap
+{
+    position: absolute;
+    z-index: 15;
+    top: 60px;
+    left: 120px;
+    transform: translateX(33vw);
+    transform-origin: top left;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+.echap.menuClose
+{
+    transform: translateX(0);
+    z-index: 5;
+}
+
 .menu
 {
     position: absolute;
     display: flex;
     flex-direction: column;
     clip-path: polygon(0 0, 100% 0%, 74% 100%, 0% 100%);
-    width: 37%;
+    width: 37vw;
     height: 100vh;
     background-color: var(--red);
-    z-index: 1000;
+    z-index: 10;
     padding: 44px;
     gap: 30px;
+    transition: transform 0.5s;
+}
+.menu.menuClose
+{
+    transition: transform 0.5s;
+    transform: translateX(-45vw);
 }
 
 .title
@@ -228,12 +257,4 @@ p
 .disclaimer p
 {
     padding-right: 128px;
-}
-
-.echap
-{
-    position: absolute;
-    z-index: 10000;
-    left: 39.5%;
-    top: 44px;
 }

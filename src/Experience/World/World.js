@@ -8,8 +8,10 @@ import SpiderMan from './SpiderMan.js'
 import CharacterControls from '../Utils/CharacterControls.js'
 import * as THREE from 'three'
 
-export default class World {
-    constructor() {
+export default class World 
+{
+    constructor() 
+    {
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
@@ -26,13 +28,15 @@ export default class World {
         })
     }
 
-    update() {
-        if (this.characterControls)
-            this.characterControls.update()
-        if (this.portal) {
+    update() 
+    {
+        if (this.portal)
+        {
             this.portal.trackPlayer(this.spiderman.model)
-            if (this.portal.tp) {
-                switch (this.portal.worldToRender) {
+            if (this.portal.tp) 
+            {
+                switch (this.portal.worldToRender) 
+                {
                     case 1:
                         // Monde 1
                         this.experience.scene.clear()
@@ -68,7 +72,11 @@ export default class World {
                 }
             }
         }
+
         if (this.spiderman)
             this.spiderman.update()
+
+        if (this.characterControls)
+            this.characterControls.update()
     }
 }
