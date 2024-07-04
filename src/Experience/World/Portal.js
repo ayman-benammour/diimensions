@@ -5,7 +5,7 @@ import Experience from '../Experience'
 
 export default class Portal {
     constructor(world) {
-        this.DISTANCE2TRIGGER = 2
+        this.DISTANCE2TRIGGER = 5
 
         this.experience = new Experience()
         this.scene = this.experience.scene
@@ -13,14 +13,9 @@ export default class Portal {
         this.debug = this.experience.debug
         this.worldToRender = world
 
-        const radiusX = 1.5;
-        const radiusY = 1.5;
+        const portalShape = new THREE.CylinderGeometry(3, 3, 0.2, 16)
+        portalShape.rotateX(Math.PI / 2)
 
-        const ovalShape = new THREE.Shape();
-        ovalShape.moveTo(0, -radiusY);
-        ovalShape.absellipse(0, 0, radiusX, radiusY, 0, Math.PI * 2, false, 0);
-
-        const geometry = new THREE.ShapeGeometry(ovalShape);
         this._uTime = 0
         const material = new THREE.RawShaderMaterial({
             side: THREE.DoubleSide,
@@ -156,9 +151,11 @@ export default class Portal {
             `
         })
         this.modelMaterial = material
-        const mesh = new THREE.Mesh(geometry, material)
+        const mesh = new THREE.Mesh(portalShape, material)
         mesh.position.setY(1)
         this.model = mesh
+        this.model.receiveShadow = true
+        this.model.castShadow = true
         this.scene.add(this.model)
     }
 

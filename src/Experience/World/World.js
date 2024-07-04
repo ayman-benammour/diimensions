@@ -20,7 +20,7 @@ export default class World
         this.resources.on('ready', () => {
                 // Setup
                 this.portal = new Portal(2)
-                this.portal.model.position.set(-3, 1, 33)
+                this.portal.model.position.set(-23, 4, 30)
                 this.spiderman = new SpiderMan()
                 this.map = new Map()
                 this.environment = new Environment()
@@ -41,7 +41,7 @@ export default class World
                         // Monde 1
                         this.experience.scene.clear()
                         this.portal = new Portal(2)
-                        this.portal.model.position.set(-3, 1, 33)
+                        this.portal.model.position.set(-100, 1, 33)
                         this.spiderman = new SpiderMan()
                         this.map = new Map()
                         this.environment = new Environment()
