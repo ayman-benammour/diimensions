@@ -30,14 +30,14 @@ export default class CharacterControls
         this.walkVelocity = 0.002
 
         // Keys
-        this.zKey = 'z'
-        this.qKey = 'q'
-        this.sKey = 's'
-        this.dKey = 'd'
-        this.vKey = 'v'
-        this.bKey = 'b'
-        this.spaceKey = ' '
-        this.shiftKey = 'shift'
+        this.zKey = 'KeyW'
+        this.qKey = 'KeyA'
+        this.sKey = 'KeyS'
+        this.dKey = 'KeyD'
+        this.vKey = 'KeyV'
+        this.bKey = 'KeyB'
+        this.spaceKey = 'Space'
+        this.shiftKey = 'ShiftLeft'
         this.directions = [this.zKey, this.qKey, this.sKey, this.dKey]
 
         this.toggleRun = false
@@ -61,20 +61,20 @@ export default class CharacterControls
             if(event.shiftKey) {
                 this.switchRunToggle()
             } else {
-                this.keysPressed[event.key.toLowerCase()] = true
+                this.keysPressed[event.code] = true
             }
 
-            if (event.key.toLowerCase() === this.vKey) {
+            if (event.code === this.vKey) {
                 this.newAction = 'breakdance'
                 this.model.animation.play(this.newAction)
             }
 
-            if (event.key.toLowerCase() === this.bKey) {
+            if (event.code === this.bKey) {
                 this.newAction = 'twerk'
                 this.model.animation.play(this.newAction)
             }
 
-            if (event.key.toLowerCase() === this.spaceKey) {
+            if (event.code === this.spaceKey) {
                 this.newAction = 'jump'
                 this.model.animation.play(this.newAction)
             }
@@ -85,8 +85,10 @@ export default class CharacterControls
         },false)
 
         document.addEventListener('keyup', (event) => {
-            this.keysPressed[event.key.toLowerCase()] = false
+            this.keysPressed[event.code] = false
         },false)
+
+        
     }
 
     directionOffset(keysPressed) 
