@@ -46,12 +46,14 @@ export default class SpiderMan {
         // Actions
         this.animation.actions = {}
 
-        this.animation.actions.idle = this.animation.mixer.clipAction(this.resource.animations[1])
-        this.animation.actions.walking = this.animation.mixer.clipAction(this.resource.animations[6])
-        this.animation.actions.running = this.animation.mixer.clipAction(this.resource.animations[3])
-        this.animation.actions.breakdance = this.animation.mixer.clipAction(this.resource.animations[0])
-        this.animation.actions.twerk = this.animation.mixer.clipAction(this.resource.animations[5])
-        this.animation.actions.jump = this.animation.mixer.clipAction(this.resource.animations[2])
+        console.log(this.animation.actions.idle = this.animation)
+        this.animation.actions.idle = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'idle'))
+        this.animation.actions.walk = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'walk'))
+        this.animation.actions.run = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'run'))
+        this.animation.actions.jump = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'jump'))
+        this.animation.actions.emote1 = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'emote1'))
+        this.animation.actions.emote2 = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'emote2'))
+        this.animation.actions.emote3 = this.animation.mixer.clipAction(this.resource.animations.find(anim => anim.name === 'emote3'))
 
         this.animation.actions.current = this.animation.actions.idle
         this.animation.actions.current.play()

@@ -21,9 +21,9 @@ export default class World
                 // Setup
                 this.portal = new Portal(2)
                 this.portal.model.position.set(-23, 4, 30)
-                this.spiderman = new SpiderMan()
                 this.map = new Map()
                 this.environment = new Environment()
+                this.spiderman = new SpiderMan()
                 this.characterControls = new CharacterControls()
         })
     }

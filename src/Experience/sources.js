@@ -20,7 +20,7 @@ export default [
     {
         name: 'spidermanModel',
         type: 'gltfModel',
-        path: 'models/SpiderMen/spiderman.glb'
+        path: 'models/SpiderMen/miles.glb'
     },
     {
         name: 'city',
