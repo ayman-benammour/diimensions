@@ -11,6 +11,19 @@ export default class Camera {
 
         this.setInstance()
         this.setControls()
+
+        // For interpolation
+        this.isInterpolating = false
+        this.interpolationSpeed = 0.05 // Adjust the speed of interpolation
+        this.targetStart = new THREE.Vector3()
+        this.targetEnd = new THREE.Vector3()
+        this.interpolationFactor = 0
+
+        // document.addEventListener('click', () =>
+        // {
+        //     console.log('CAMERA POSITION', this.instance.position)
+        //     console.log('CAMERA ROTATION', this.instance.rotation)
+        // })
     }
 
     setInstance() {
@@ -27,12 +40,35 @@ export default class Camera {
         this.controls.enableDamping = true
     }
 
+    setTarget(target, heightOffset = 0.5, immediate = false) {
+        const adjustedTarget = target.clone()
+        adjustedTarget.y += heightOffset
+        if (immediate) {
+            this.controls.target.copy(adjustedTarget)
+            this.controls.update()
+        } else {
+            this.targetStart.copy(this.controls.target)
+            this.targetEnd.copy(adjustedTarget)
+            this.interpolationFactor = 0
+            this.isInterpolating = true
+            
+        }
+    }
+
     resize() {
         this.instance.aspect = this.sizes.width / this.sizes.height
         this.instance.updateProjectionMatrix()
     }
 
     update() {
+        if (this.isInterpolating) {
+            this.interpolationFactor += this.interpolationSpeed
+            if (this.interpolationFactor >= 1) {
+                this.interpolationFactor = 1
+                this.isInterpolating = false
+            }
+            this.controls.target.lerpVectors(this.targetStart, this.targetEnd, this.interpolationFactor)
+        }
         this.controls.update()
     }
 }

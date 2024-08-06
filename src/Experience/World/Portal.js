@@ -5,7 +5,7 @@ import Experience from '../Experience'
 
 export default class Portal {
     constructor(world) {
-        this.DISTANCE2TRIGGER = 5
+        this.DISTANCE2TRIGGER = 3
 
         this.experience = new Experience()
         this.scene = this.experience.scene

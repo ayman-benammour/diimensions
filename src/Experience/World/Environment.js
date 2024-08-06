@@ -1,11 +1,9 @@
 import * as THREE from 'three'
 import Experience from '../Experience.js'
-import { GroundedSkybox } from 'three/examples/jsm/Addons.js'
-import { RGBELoader } from 'three/examples/jsm/Addons.js'
 
 export default class Environment
 {
-    constructor()
+    constructor(envMap)
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
@@ -19,27 +17,28 @@ export default class Environment
         }
 
         this.setSunLight()
-        this.setEnvironmentMap()
+        this.setEnvironmentMap(envMap)
     }
 
     setSunLight()
     {
-        this.sunLight = new THREE.DirectionalLight('#ffffff', 4)
+        this.sunLight = new THREE.DirectionalLight('#ffffff', 2)
 
         this.sunLight.castShadow = true
-        this.sunLight.shadow.camera.near = -30
+        this.sunLight.shadow.camera.near = -50
         this.sunLight.shadow.camera.far = 50
         this.sunLight.shadow.mapSize.set(2048, 2048)
         this.sunLight.shadow.normalBias = 0.05
-        this.sunLight.shadow.camera.top = 25
+        this.sunLight.shadow.camera.top = 50
         this.sunLight.shadow.camera.right = 40
         this.sunLight.shadow.camera.bottom = - 30
         this.sunLight.shadow.camera.left = - 45
 
-        this.sunLight.position.set(-5, 5, 5)
-
         const directionalLightCameraHelper = new THREE.CameraHelper(this.sunLight.shadow.camera)
         // this.scene.add(directionalLightCameraHelper)
+
+        this.sunLight.position.set(-5, 5, 5)
+
         this.scene.add(this.sunLight)
 
         // Debug
@@ -75,17 +74,15 @@ export default class Environment
         }
     }
 
-    setEnvironmentMap() {
+    setEnvironmentMap(envMap) {
 
         this.environmentMap = {}
-        this.environmentMap.texture = this.resources.items.environmentMapTexture
-        this.environmentMap.intensity = 0.3
+        this.environmentMap.texture = this.resources.items[envMap]
         this.environmentMap.texture.mapping = THREE.EquirectangularReflectionMapping
         
         this.scene.environment = this.environmentMap.texture
-        this.scene.environmentIntensity = this.environmentMap.intensity
         // this.scene.background = this.environmentMap.texture
-        // this.scene.backgroundIntensity = 0.3
+        // this.scene.backgroundIntensity = this.environmentMap.intensity
     
         this.environmentMap.updateMaterials = () => {
             this.scene.traverse((child) => {
@@ -105,7 +102,7 @@ export default class Environment
                 .min(0)
                 .max(4)
                 .step(0.001)
-                .onChange(this.environmentMap.updateMaterialss)
+                .onChange(this.environmentMap.updateMaterials)
         }
     }
  

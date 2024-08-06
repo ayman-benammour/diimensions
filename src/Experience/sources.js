@@ -1,40 +1,35 @@
 export default [
+    // Env Maps
     {
-        name: 'environmentMapTexture',
+        name: 'milesEnvMap',
         type: 'rgbe',
-        path:
-        [
-            'textures/environmentMap/2k.hdr'
-        ]
+        path: 'textures/env-maps/miles-env-map.hdr'
     },
     {
-        name: 'grassColorTexture',
+        name: 'miguelEnvMap',
         type: 'texture',
-        path: 'textures/dirt/color.jpg'
+        path: 'textures/env-maps/miguel-env-map.jpg'
     },
+    // Characters
     {
-        name: 'grassNormalTexture',
-        type: 'texture',
-        path: 'textures/dirt/normal.jpg'
-    },
-    {
-        name: 'spidermanModel',
+        name: 'miles',
         type: 'gltfModel',
-        path: 'models/SpiderMen/miles.glb'
+        path: 'models/spider-men/miles.glb'
     },
     {
-        name: 'city',
+        name: 'miguel',
         type: 'gltfModel',
-        path: 'models/Maps/city.glb'
+        path: 'models/spider-men/miguel.glb'
+    },
+    // Maps
+    {
+        name: 'milesMap',
+        type: 'gltfModel',
+        path: 'models/maps/miles-map.glb'
     },
     {
-        name: 'lego',
+        name: 'miguelMap',
         type: 'gltfModel',
-        path: 'models/Maps/lego.glb'
-    },
-    {
-        name: 'minecraft',
-        type: 'gltfModel',
-        path: 'models/Maps/minecraft.glb'
+        path: 'models/maps/miguel-map.glb'
     },
 ]

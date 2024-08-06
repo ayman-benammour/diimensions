@@ -3,7 +3,7 @@ import Experience from '../Experience.js'
 
 export default class CharacterControls
 {
-    constructor()
+    constructor(runVelocity)
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
@@ -11,7 +11,7 @@ export default class CharacterControls
         this.time = this.experience.time
         this.debug = this.experience.debug
         this.model = this.experience.world.spiderman
-        this.camera = this.experience.camera
+        this.camera = this.experience.camera // Add reference to camera
 
         // Debug
         if(this.debug.active)
@@ -26,7 +26,7 @@ export default class CharacterControls
         this.cameraTarget = new THREE.Vector3()
 
         // Constants
-        this.runVelocity = 0.008
+        this.runVelocity = runVelocity
         this.walkVelocity = 0.002
 
         // Keys
@@ -47,6 +47,10 @@ export default class CharacterControls
         this.directions = [this.zKey, this.qKey, this.sKey, this.dKey, this.upArrow, this.leftArrow, this.downArrow, this.rightArrow]
 
         this.toggleRun = false
+        this.lastShiftPress = 0
+        this.lastCPress = 0
+        this.lastVPress = 0
+        this.lastSpacePress = 0
 
         this.keysPressed()
         
@@ -60,17 +64,45 @@ export default class CharacterControls
             [this.zKey, this.upArrow], [this.qKey, this.leftArrow], [this.zKey, this.upArrow], [this.dKey, this.rightArrow],
             [this.sKey, this.downArrow], [this.dKey, this.rightArrow], [this.zKey, this.upArrow], [this.qKey, this.leftArrow],
             [this.zKey, this.upArrow], [this.qKey, this.leftArrow], [this.bKey], [this.nKey]
-        ];
+        ]
         this.secretCodeIndex = 0
-
-            // Create audio element
-            this.secretMusic = new Audio('/sounds/secretMusic.mp3')
-            this.secretMusic.volume = 0.5
+        this.audio = new Audio('/sounds/secret-music.mp3')
     }
 
     switchRunToggle()
     {
-        this.toggleRun = !this.toggleRun
+        const now = Date.now()
+        if (now - this.lastShiftPress > 500) { // 500ms delay to prevent spam
+            this.toggleRun = !this.toggleRun
+            this.lastShiftPress = now
+        }
+    }
+
+    playEmote1() {
+        const now = Date.now()
+        if (now - this.lastCPress > 500) { // 500ms delay to prevent spam
+            this.newAction = 'emote1'
+            this.model.animation.play(this.newAction)
+            this.lastCPress = now
+        }
+    }
+
+    playEmote2() {
+        const now = Date.now()
+        if (now - this.lastVPress > 500) { // 500ms delay to prevent spam
+            this.newAction = 'emote2'
+            this.model.animation.play(this.newAction)
+            this.lastVPress = now
+        }
+    }
+
+    playJump() {
+        const now = Date.now()
+        if (now - this.lastSpacePress > 500) { // 500ms delay to prevent spam
+            this.newAction = 'jump'
+            this.model.animation.play(this.newAction)
+            this.lastSpacePress = now
+        }
     }
 
     keysPressed()
@@ -78,26 +110,27 @@ export default class CharacterControls
         this.keysPressed = {}
 
         document.addEventListener('keydown', (event) => {
-            if(event.shiftKey) {
+            if (event.code === this.shiftKey) {
                 this.switchRunToggle()
-            } else {
-                this.keysPressed[event.code] = true
+                return // Exit early to prevent affecting other key logic
             }
 
-            // Check for emotes
+            this.keysPressed[event.code] = true
+
+            // Check for emotes and actions
             if (event.code === this.cKey) {
-                this.newAction = 'emote1'
-                this.model.animation.play(this.newAction)
+                this.playEmote1()
+                return
             }
 
             if (event.code === this.vKey) {
-                this.newAction = 'emote2'
-                this.model.animation.play(this.newAction)
+                this.playEmote2()
+                return
             }
 
             if (event.code === this.spaceKey) {
-                this.newAction = 'jump'
-                this.model.animation.play(this.newAction)
+                this.playJump()
+                return
             }
 
             this.camera.instance.zoom = 1
@@ -105,17 +138,15 @@ export default class CharacterControls
 
             // Check custom sequence
             if (this.secretCodeSequence[this.secretCodeIndex].includes(event.code)) {
-                this.secretCodeIndex++;
+                this.secretCodeIndex++
                 if (this.secretCodeIndex === this.secretCodeSequence.length) {
-                    this.secretMusic.play()
-
+                    this.audio.play() // Play the audio file
                     this.newAction = 'emote3'
                     this.model.animation.play(this.newAction)
-
-                    this.secretCodeIndex = 0;
+                    this.secretCodeIndex = 0
                 }
             } else {
-                this.secretCodeIndex = 0;
+                this.secretCodeIndex = 0
             }
 
         }, false)
@@ -159,9 +190,9 @@ export default class CharacterControls
 
         // update camera target
         this.cameraTarget.x = this.model.model.position.x
-        this.cameraTarget.y = this.model.model.position.y + 1
+        this.cameraTarget.y = this.model.model.position.y + 0.5 // Adjusted height for head
         this.cameraTarget.z = this.model.model.position.z
-        this.camera.controls.target = this.cameraTarget
+        this.camera.setTarget(this.cameraTarget) // Use the setTarget method to smoothly update the camera target
     }
 
     update()
@@ -179,7 +210,7 @@ export default class CharacterControls
         // Change animation only if the new action is different
         if (this.currentAction !== this.newAction) {
             this.currentAction = this.newAction
-            this.model.animation.play(this.newAction)
+            this.model.animation.play(this.currentAction)
         }
 
         if (this.currentAction == 'run' || this.currentAction == 'walk') {

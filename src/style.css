@@ -1,8 +1,10 @@
-:root
+@keyframes portal
 {
-    --red: #E60509;
-
+    0% { transform: rotate(0)}
+    50% { transform: rotate(100)}
+    100% { transform: rotate(0)}
 }
+
 *
 {
     margin: 0;
@@ -14,7 +16,6 @@ body
 {
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(180deg, #EE8F61 0%, #FCC28C 29.4%, #EFDDCF 100%);
 }
 
 .webgl
@@ -40,13 +41,15 @@ body
     height: 100%;
     object-position: bottom;
     object-fit: cover;
+    transition: transform 1.5s;
+    transform: none;
 }
 
 .loadingScreen.ended
 {
     transform-origin: top left;
     transition: transform 1.5s;
-    transform: translateY(1000px);
+    transform: translateY(120vh);
 }
 
 .loadingButton
@@ -56,6 +59,8 @@ body
     left: calc(50% - 100px);
     bottom: 80px;
     width: 200px;
+    transition: transform 0.5s;
+    transform: none;
 }
 
 .loadingButton.ended
@@ -85,7 +90,7 @@ body
     transition: transform 1.5s ease-in-out;
 }
 
-.uiPhone
+.phone
 {
     position: absolute;
     z-index: 5;
@@ -96,7 +101,7 @@ body
     transition: all linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%) 2s;
 }
 
-.uiPhone.active
+.phone.active
 {
     bottom: 5vh;
 }
@@ -135,12 +140,12 @@ body
     clip-path: polygon(0 0, 100% 0%, 74% 100%, 0% 100%);
     width: 37vw;
     height: 100vh;
-    background-color: var(--red);
     z-index: 10;
     padding: 44px;
     gap: 30px;
     transition: transform 0.5s;
 }
+
 .menu.menuClose
 {
     transition: transform 0.5s;
@@ -156,7 +161,7 @@ body
     font-variation-settings:
         "wdth" 75;
     color: white;
-    font-size: 12vh;
+    font-size: 10vh;
     margin-top: -30px;
 }
 
@@ -170,7 +175,7 @@ h3
     font-variation-settings:
         "wdth" 75;
     color: white;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 h4
@@ -193,6 +198,14 @@ p
     font-size: 14px;
     color: white;
 }
+
+a
+{
+    font-family: 'Poppins';
+    font-size: 14px;
+    color: white;
+}
+
 
 .desc
 {
@@ -223,6 +236,7 @@ p
     position: absolute;
     top: 0px;
     left: 0px;
+    cursor: pointer
 }
 
 .selection .gwen
@@ -230,31 +244,44 @@ p
     position: absolute;
     top: -25px;
     left: 215px;
-}
+    cursor: not-allowed;
+} 
 
-.selection .mc
+.selection .minecraft
 {
     position: absolute;
-    bottom: -20px;
+    top: 131px;
     left: 0px;
+    cursor: not-allowed;
 }
 
 .selection .lego
 {
     position: absolute;
-    bottom: -27px;
+    top: 138px;
     left: 192px;
     z-index: 1;
+    cursor: not-allowed;
 }
 
 .selection .miguel
 {
     position: absolute;
     top: 14px;
-    right: 0px;
+    left: 414px;
+    cursor: pointer;
 }
 
 .disclaimer p
 {
     padding-right: 128px;
+}
+
+.sound
+{
+    position: absolute;
+    bottom: 38px;
+    right: 424px;
+    cursor: pointer;
+    z-index: 100;
 }
