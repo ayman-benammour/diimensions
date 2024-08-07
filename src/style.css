@@ -7,7 +7,9 @@
 
 @media only screen and (max-width: 900px) {
     .responsiveScreen {
-        display: block !important;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -303,6 +305,19 @@ a
     top: 0;
     left: 0;
     z-index: 99999999;
-    background-color: aliceblue;
+    background-color: #e60509;
     display: none;
+}
+
+.responsiveScreen h1
+{
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-variation-settings: "wdth" 75;
+    color: white;
+    text-align: center;
 }
