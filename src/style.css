@@ -5,6 +5,12 @@
     100% { transform: rotate(0)}
 }
 
+@media only screen and (max-width: 900px) {
+    .responsiveScreen {
+        display: block !important;
+    }
+}
+
 *
 {
     margin: 0;
@@ -138,12 +144,15 @@ body
     display: flex;
     flex-direction: column;
     clip-path: polygon(0 0, 100% 0%, 74% 100%, 0% 100%);
-    width: 37vw;
+    width: 41vw;
     height: 100vh;
     z-index: 10;
     padding: 44px;
     gap: 30px;
     transition: transform 0.5s;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
 }
 
 .menu.menuClose
@@ -161,8 +170,9 @@ body
     font-variation-settings:
         "wdth" 75;
     color: white;
-    font-size: 10vh;
+    font-size: clamp(50px, 5vw, 100px);
     margin-top: -30px;
+    margin-bottom: -12px;
 }
 
 h3
@@ -175,7 +185,7 @@ h3
     font-variation-settings:
         "wdth" 75;
     color: white;
-    font-size: 30px;
+    font-size: clamp(20px, 2vw, 32px);
 }
 
 h4
@@ -188,21 +198,21 @@ h4
     font-variation-settings:
         "wdth" 75;
     color: white;
-    font-size: 20px;
+    font-size: 200px;
     margin-top: 10px;
 }
 
 p
 {
     font-family: 'Poppins';
-    font-size: 14px;
+    font-size: 12px;
     color: white;
 }
 
 a
 {
     font-family: 'Poppins';
-    font-size: 14px;
+    font-size: 12px;
     color: white;
 }
 
@@ -217,14 +227,13 @@ a
     font-variation-settings:
         "wdth" 75;
     color: white;
-    margin-top: -25px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .selection
 {
     position: relative;
-    width: 33vw;
+    width: 640px;
     height: 29vh;
     margin-top: -40px;
     display: flex;
@@ -284,4 +293,16 @@ a
     right: 424px;
     cursor: pointer;
     z-index: 100;
+}
+
+.responsiveScreen
+{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999999;
+    background-color: aliceblue;
+    display: none;
 }
