@@ -21,20 +21,18 @@ npm run build
 
 ## CREDITS AND SPECIAL THANKS
 
-- [Ayman **BENAMMOUR**](https://bento.me/abenam)
-
+- [Ayman **BENAMMOUR**](https://bento.me/abenam)<br><br>
 - [Maxime **BARON**](https://github.com/maxime-baron)
 - [Enas **EL MERSHATI**](https://github.com/enas-elm)
 - [Mylène **M’ZALI**](https://github.com/Sadako-amaryllis)
 - [Yann **DECELLE**](https://github.com/YannDecelle)
-- [**IIM Digital School**](https://www.iim.fr/)
-
+- [**IIM Digital School**](https://www.iim.fr/)<br><br>
 - [GitHub project link](https://github.com/ayman-benammour/diimensions)
 
 ## DISCLAIMER
 
-This website is a personal project and not intended for commercial use.
+This website is a personal project and not intended for commercial use.<br>
 All content remains the property of their respective owners.
 
-This experience has no physics and no responsive yet.
+This experience has no physics and no responsive yet.<br>
 Bugs and optimizations will be fixed soon.
