@@ -1,9 +1,10 @@
-# Diimensions
-Diimensions is a 3D web experience created in three days by students at [IIM](https://www.iim.fr/). Inspired by the Spider-Verse universe, this experience allows users to follow a Spider-Man through different dimensions. With each transition, the maps and textures change, mimicking the film's unique aesthetic.
+# DIIMENSIONS
+**DIIMENSIONS is a 3D web experience inspired by the Spider-Verse universe. This experience allows users to follow a Spider-Man through different dimensions.**
 
-This website is the work of students at [IIM](https://www.iim.fr/). It exists for educational purposes only and its content remains the property of its respective authors.
+## LIVE
+[diimensions.vercel.app](https://diimensions.vercel.app/)
 
-## Setup
+## SETUP
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
 
@@ -17,3 +18,23 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+## CREDITS AND SPECIAL THANKS
+
+- [Ayman **BENAMMOUR**](https://bento.me/abenam)
+
+- [Maxime **BARON**](https://github.com/maxime-baron)
+- [Enas **EL MERSHATI**](https://github.com/enas-elm)
+- [Mylène **M’ZALI**](https://github.com/Sadako-amaryllis)
+- [Yann **DECELLE**](https://github.com/YannDecelle)
+- [**IIM Digital School**](https://www.iim.fr/)
+
+- [GitHub project link](https://github.com/ayman-benammour/diimensions)
+
+## DISCLAIMER
+
+This website is a personal project and not intended for commercial use.
+All content remains the property of their respective owners.
+
+This experience has no physics and no responsive yet.
+Bugs and optimizations will be fixed soon.
