@@ -27,7 +27,7 @@ npm run build
 - [Mylène **M’ZALI**](https://github.com/Sadako-amaryllis)
 - [Yann **DECELLE**](https://github.com/YannDecelle)
 - [**IIM Digital School**](https://www.iim.fr/)<br><br>
-- [GitHub project link](https://github.com/ayman-benammour/diimensions)
+- [**GitHub project link**](https://github.com/ayman-benammour/diimensions)
 
 ## DISCLAIMER
 
