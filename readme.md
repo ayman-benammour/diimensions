@@ -1,3 +1,5 @@
+<img src="/static/images/diimensions-banner.png" style="width: 100%;">
+
 # DIIMENSIONS
 **DIIMENSIONS is a 3D web experience inspired by the Spider-Verse universe. This experience allows users to follow a Spider-Man through different dimensions.**
 
